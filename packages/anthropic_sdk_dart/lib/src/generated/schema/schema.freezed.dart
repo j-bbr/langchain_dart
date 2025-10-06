@@ -5795,6 +5795,291 @@ as String,
 
 }
 
+
+/// @nodoc
+mixin _$WebSearchResultItem {
+
+/// The type of search result.
+ String get type;/// The URL of the search result.
+ String get url;/// The title of the search result.
+ String get title;/// The encrypted content of the search result.
+@JsonKey(name: 'encrypted_content', includeIfNull: false) String? get encryptedContent;/// The age or date of the page.
+@JsonKey(name: 'page_age', includeIfNull: false) String? get pageAge;
+/// Create a copy of WebSearchResultItem
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$WebSearchResultItemCopyWith<WebSearchResultItem> get copyWith => _$WebSearchResultItemCopyWithImpl<WebSearchResultItem>(this as WebSearchResultItem, _$identity);
+
+  /// Serializes this WebSearchResultItem to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WebSearchResultItem&&(identical(other.type, type) || other.type == type)&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.encryptedContent, encryptedContent) || other.encryptedContent == encryptedContent)&&(identical(other.pageAge, pageAge) || other.pageAge == pageAge));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,type,url,title,encryptedContent,pageAge);
+
+@override
+String toString() {
+  return 'WebSearchResultItem(type: $type, url: $url, title: $title, encryptedContent: $encryptedContent, pageAge: $pageAge)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $WebSearchResultItemCopyWith<$Res>  {
+  factory $WebSearchResultItemCopyWith(WebSearchResultItem value, $Res Function(WebSearchResultItem) _then) = _$WebSearchResultItemCopyWithImpl;
+@useResult
+$Res call({
+ String type, String url, String title,@JsonKey(name: 'encrypted_content', includeIfNull: false) String? encryptedContent,@JsonKey(name: 'page_age', includeIfNull: false) String? pageAge
+});
+
+
+
+
+}
+/// @nodoc
+class _$WebSearchResultItemCopyWithImpl<$Res>
+    implements $WebSearchResultItemCopyWith<$Res> {
+  _$WebSearchResultItemCopyWithImpl(this._self, this._then);
+
+  final WebSearchResultItem _self;
+  final $Res Function(WebSearchResultItem) _then;
+
+/// Create a copy of WebSearchResultItem
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? url = null,Object? title = null,Object? encryptedContent = freezed,Object? pageAge = freezed,}) {
+  return _then(_self.copyWith(
+type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,encryptedContent: freezed == encryptedContent ? _self.encryptedContent : encryptedContent // ignore: cast_nullable_to_non_nullable
+as String?,pageAge: freezed == pageAge ? _self.pageAge : pageAge // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [WebSearchResultItem].
+extension WebSearchResultItemPatterns on WebSearchResultItem {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _WebSearchResultItem value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _WebSearchResultItem() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _WebSearchResultItem value)  $default,){
+final _that = this;
+switch (_that) {
+case _WebSearchResultItem():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _WebSearchResultItem value)?  $default,){
+final _that = this;
+switch (_that) {
+case _WebSearchResultItem() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String type,  String url,  String title, @JsonKey(name: 'encrypted_content', includeIfNull: false)  String? encryptedContent, @JsonKey(name: 'page_age', includeIfNull: false)  String? pageAge)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _WebSearchResultItem() when $default != null:
+return $default(_that.type,_that.url,_that.title,_that.encryptedContent,_that.pageAge);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String type,  String url,  String title, @JsonKey(name: 'encrypted_content', includeIfNull: false)  String? encryptedContent, @JsonKey(name: 'page_age', includeIfNull: false)  String? pageAge)  $default,) {final _that = this;
+switch (_that) {
+case _WebSearchResultItem():
+return $default(_that.type,_that.url,_that.title,_that.encryptedContent,_that.pageAge);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String type,  String url,  String title, @JsonKey(name: 'encrypted_content', includeIfNull: false)  String? encryptedContent, @JsonKey(name: 'page_age', includeIfNull: false)  String? pageAge)?  $default,) {final _that = this;
+switch (_that) {
+case _WebSearchResultItem() when $default != null:
+return $default(_that.type,_that.url,_that.title,_that.encryptedContent,_that.pageAge);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _WebSearchResultItem extends WebSearchResultItem {
+  const _WebSearchResultItem({required this.type, required this.url, required this.title, @JsonKey(name: 'encrypted_content', includeIfNull: false) this.encryptedContent, @JsonKey(name: 'page_age', includeIfNull: false) this.pageAge}): super._();
+  factory _WebSearchResultItem.fromJson(Map<String, dynamic> json) => _$WebSearchResultItemFromJson(json);
+
+/// The type of search result.
+@override final  String type;
+/// The URL of the search result.
+@override final  String url;
+/// The title of the search result.
+@override final  String title;
+/// The encrypted content of the search result.
+@override@JsonKey(name: 'encrypted_content', includeIfNull: false) final  String? encryptedContent;
+/// The age or date of the page.
+@override@JsonKey(name: 'page_age', includeIfNull: false) final  String? pageAge;
+
+/// Create a copy of WebSearchResultItem
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$WebSearchResultItemCopyWith<_WebSearchResultItem> get copyWith => __$WebSearchResultItemCopyWithImpl<_WebSearchResultItem>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$WebSearchResultItemToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WebSearchResultItem&&(identical(other.type, type) || other.type == type)&&(identical(other.url, url) || other.url == url)&&(identical(other.title, title) || other.title == title)&&(identical(other.encryptedContent, encryptedContent) || other.encryptedContent == encryptedContent)&&(identical(other.pageAge, pageAge) || other.pageAge == pageAge));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,type,url,title,encryptedContent,pageAge);
+
+@override
+String toString() {
+  return 'WebSearchResultItem(type: $type, url: $url, title: $title, encryptedContent: $encryptedContent, pageAge: $pageAge)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$WebSearchResultItemCopyWith<$Res> implements $WebSearchResultItemCopyWith<$Res> {
+  factory _$WebSearchResultItemCopyWith(_WebSearchResultItem value, $Res Function(_WebSearchResultItem) _then) = __$WebSearchResultItemCopyWithImpl;
+@override @useResult
+$Res call({
+ String type, String url, String title,@JsonKey(name: 'encrypted_content', includeIfNull: false) String? encryptedContent,@JsonKey(name: 'page_age', includeIfNull: false) String? pageAge
+});
+
+
+
+
+}
+/// @nodoc
+class __$WebSearchResultItemCopyWithImpl<$Res>
+    implements _$WebSearchResultItemCopyWith<$Res> {
+  __$WebSearchResultItemCopyWithImpl(this._self, this._then);
+
+  final _WebSearchResultItem _self;
+  final $Res Function(_WebSearchResultItem) _then;
+
+/// Create a copy of WebSearchResultItem
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? type = null,Object? url = null,Object? title = null,Object? encryptedContent = freezed,Object? pageAge = freezed,}) {
+  return _then(_WebSearchResultItem(
+type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,encryptedContent: freezed == encryptedContent ? _self.encryptedContent : encryptedContent // ignore: cast_nullable_to_non_nullable
+as String?,pageAge: freezed == pageAge ? _self.pageAge : pageAge // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
 Tool _$ToolFromJson(
   Map<String, dynamic> json
 ) {
@@ -6850,12 +7135,12 @@ Block _$BlockFromJson(
           return ToolResultBlock.fromJson(
             json
           );
-                case 'search_result':
-          return SearchResultBlock.fromJson(
-            json
-          );
                 case 'server_tool_use':
           return ServerToolUseBlock.fromJson(
+            json
+          );
+                case 'web_search_tool_result':
+          return WebSearchToolResultBlock.fromJson(
             json
           );
         
@@ -6962,16 +7247,16 @@ extension BlockPatterns on Block {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( TextBlock value)?  text,TResult Function( ImageBlock value)?  image,TResult Function( ToolUseBlock value)?  toolUse,TResult Function( ToolResultBlock value)?  toolResult,TResult Function( SearchResultBlock value)?  searchResult,TResult Function( ServerToolUseBlock value)?  serverToolUse,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( TextBlock value)?  text,TResult Function( ImageBlock value)?  image,TResult Function( ToolUseBlock value)?  toolUse,TResult Function( ToolResultBlock value)?  toolResult,TResult Function( ServerToolUseBlock value)?  serverToolUse,TResult Function( WebSearchToolResultBlock value)?  webSearchToolResult,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case TextBlock() when text != null:
 return text(_that);case ImageBlock() when image != null:
 return image(_that);case ToolUseBlock() when toolUse != null:
 return toolUse(_that);case ToolResultBlock() when toolResult != null:
-return toolResult(_that);case SearchResultBlock() when searchResult != null:
-return searchResult(_that);case ServerToolUseBlock() when serverToolUse != null:
-return serverToolUse(_that);case _:
+return toolResult(_that);case ServerToolUseBlock() when serverToolUse != null:
+return serverToolUse(_that);case WebSearchToolResultBlock() when webSearchToolResult != null:
+return webSearchToolResult(_that);case _:
   return orElse();
 
 }
@@ -6989,16 +7274,16 @@ return serverToolUse(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( TextBlock value)  text,required TResult Function( ImageBlock value)  image,required TResult Function( ToolUseBlock value)  toolUse,required TResult Function( ToolResultBlock value)  toolResult,required TResult Function( SearchResultBlock value)  searchResult,required TResult Function( ServerToolUseBlock value)  serverToolUse,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( TextBlock value)  text,required TResult Function( ImageBlock value)  image,required TResult Function( ToolUseBlock value)  toolUse,required TResult Function( ToolResultBlock value)  toolResult,required TResult Function( ServerToolUseBlock value)  serverToolUse,required TResult Function( WebSearchToolResultBlock value)  webSearchToolResult,}){
 final _that = this;
 switch (_that) {
 case TextBlock():
 return text(_that);case ImageBlock():
 return image(_that);case ToolUseBlock():
 return toolUse(_that);case ToolResultBlock():
-return toolResult(_that);case SearchResultBlock():
-return searchResult(_that);case ServerToolUseBlock():
-return serverToolUse(_that);}
+return toolResult(_that);case ServerToolUseBlock():
+return serverToolUse(_that);case WebSearchToolResultBlock():
+return webSearchToolResult(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -7012,16 +7297,16 @@ return serverToolUse(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( TextBlock value)?  text,TResult? Function( ImageBlock value)?  image,TResult? Function( ToolUseBlock value)?  toolUse,TResult? Function( ToolResultBlock value)?  toolResult,TResult? Function( SearchResultBlock value)?  searchResult,TResult? Function( ServerToolUseBlock value)?  serverToolUse,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( TextBlock value)?  text,TResult? Function( ImageBlock value)?  image,TResult? Function( ToolUseBlock value)?  toolUse,TResult? Function( ToolResultBlock value)?  toolResult,TResult? Function( ServerToolUseBlock value)?  serverToolUse,TResult? Function( WebSearchToolResultBlock value)?  webSearchToolResult,}){
 final _that = this;
 switch (_that) {
 case TextBlock() when text != null:
 return text(_that);case ImageBlock() when image != null:
 return image(_that);case ToolUseBlock() when toolUse != null:
 return toolUse(_that);case ToolResultBlock() when toolResult != null:
-return toolResult(_that);case SearchResultBlock() when searchResult != null:
-return searchResult(_that);case ServerToolUseBlock() when serverToolUse != null:
-return serverToolUse(_that);case _:
+return toolResult(_that);case ServerToolUseBlock() when serverToolUse != null:
+return serverToolUse(_that);case WebSearchToolResultBlock() when webSearchToolResult != null:
+return webSearchToolResult(_that);case _:
   return null;
 
 }
@@ -7038,15 +7323,15 @@ return serverToolUse(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  text,TResult Function( ImageBlockSource source,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  image,TResult Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  toolUse,TResult Function(@JsonKey(name: 'tool_use_id')  String toolUseId, @_ToolResultBlockContentConverter()  ToolResultBlockContent content, @JsonKey(name: 'is_error', includeIfNull: false)  bool? isError,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  toolResult,TResult Function( String source,  String title,  List<TextBlock> content, @JsonKey(includeIfNull: false)  SearchResultBlockCitations? citations,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  searchResult,TResult Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  serverToolUse,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  text,TResult Function( ImageBlockSource source,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  image,TResult Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  toolUse,TResult Function(@JsonKey(name: 'tool_use_id')  String toolUseId, @_ToolResultBlockContentConverter()  ToolResultBlockContent content, @JsonKey(name: 'is_error', includeIfNull: false)  bool? isError,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  toolResult,TResult Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  serverToolUse,TResult Function( String type, @JsonKey(name: 'tool_use_id')  String toolUseId,  List<WebSearchResultItem> content, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  webSearchToolResult,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case TextBlock() when text != null:
 return text(_that.text,_that.type,_that.cacheControl);case ImageBlock() when image != null:
 return image(_that.source,_that.type,_that.cacheControl);case ToolUseBlock() when toolUse != null:
 return toolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheControl);case ToolResultBlock() when toolResult != null:
-return toolResult(_that.toolUseId,_that.content,_that.isError,_that.type,_that.cacheControl);case SearchResultBlock() when searchResult != null:
-return searchResult(_that.source,_that.title,_that.content,_that.citations,_that.type,_that.cacheControl);case ServerToolUseBlock() when serverToolUse != null:
-return serverToolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheControl);case _:
+return toolResult(_that.toolUseId,_that.content,_that.isError,_that.type,_that.cacheControl);case ServerToolUseBlock() when serverToolUse != null:
+return serverToolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheControl);case WebSearchToolResultBlock() when webSearchToolResult != null:
+return webSearchToolResult(_that.type,_that.toolUseId,_that.content,_that.cacheControl);case _:
   return orElse();
 
 }
@@ -7064,15 +7349,15 @@ return serverToolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheContr
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  text,required TResult Function( ImageBlockSource source,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  image,required TResult Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  toolUse,required TResult Function(@JsonKey(name: 'tool_use_id')  String toolUseId, @_ToolResultBlockContentConverter()  ToolResultBlockContent content, @JsonKey(name: 'is_error', includeIfNull: false)  bool? isError,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  toolResult,required TResult Function( String source,  String title,  List<TextBlock> content, @JsonKey(includeIfNull: false)  SearchResultBlockCitations? citations,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  searchResult,required TResult Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  serverToolUse,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  text,required TResult Function( ImageBlockSource source,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  image,required TResult Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  toolUse,required TResult Function(@JsonKey(name: 'tool_use_id')  String toolUseId, @_ToolResultBlockContentConverter()  ToolResultBlockContent content, @JsonKey(name: 'is_error', includeIfNull: false)  bool? isError,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  toolResult,required TResult Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  serverToolUse,required TResult Function( String type, @JsonKey(name: 'tool_use_id')  String toolUseId,  List<WebSearchResultItem> content, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)  webSearchToolResult,}) {final _that = this;
 switch (_that) {
 case TextBlock():
 return text(_that.text,_that.type,_that.cacheControl);case ImageBlock():
 return image(_that.source,_that.type,_that.cacheControl);case ToolUseBlock():
 return toolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheControl);case ToolResultBlock():
-return toolResult(_that.toolUseId,_that.content,_that.isError,_that.type,_that.cacheControl);case SearchResultBlock():
-return searchResult(_that.source,_that.title,_that.content,_that.citations,_that.type,_that.cacheControl);case ServerToolUseBlock():
-return serverToolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheControl);}
+return toolResult(_that.toolUseId,_that.content,_that.isError,_that.type,_that.cacheControl);case ServerToolUseBlock():
+return serverToolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheControl);case WebSearchToolResultBlock():
+return webSearchToolResult(_that.type,_that.toolUseId,_that.content,_that.cacheControl);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -7086,15 +7371,15 @@ return serverToolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheContr
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  text,TResult? Function( ImageBlockSource source,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  image,TResult? Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  toolUse,TResult? Function(@JsonKey(name: 'tool_use_id')  String toolUseId, @_ToolResultBlockContentConverter()  ToolResultBlockContent content, @JsonKey(name: 'is_error', includeIfNull: false)  bool? isError,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  toolResult,TResult? Function( String source,  String title,  List<TextBlock> content, @JsonKey(includeIfNull: false)  SearchResultBlockCitations? citations,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  searchResult,TResult? Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  serverToolUse,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  text,TResult? Function( ImageBlockSource source,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  image,TResult? Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  toolUse,TResult? Function(@JsonKey(name: 'tool_use_id')  String toolUseId, @_ToolResultBlockContentConverter()  ToolResultBlockContent content, @JsonKey(name: 'is_error', includeIfNull: false)  bool? isError,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  toolResult,TResult? Function( String id,  String name,  Map<String, dynamic> input,  String type, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  serverToolUse,TResult? Function( String type, @JsonKey(name: 'tool_use_id')  String toolUseId,  List<WebSearchResultItem> content, @JsonKey(name: 'cache_control', includeIfNull: false)  CacheControlEphemeral? cacheControl)?  webSearchToolResult,}) {final _that = this;
 switch (_that) {
 case TextBlock() when text != null:
 return text(_that.text,_that.type,_that.cacheControl);case ImageBlock() when image != null:
 return image(_that.source,_that.type,_that.cacheControl);case ToolUseBlock() when toolUse != null:
 return toolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheControl);case ToolResultBlock() when toolResult != null:
-return toolResult(_that.toolUseId,_that.content,_that.isError,_that.type,_that.cacheControl);case SearchResultBlock() when searchResult != null:
-return searchResult(_that.source,_that.title,_that.content,_that.citations,_that.type,_that.cacheControl);case ServerToolUseBlock() when serverToolUse != null:
-return serverToolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheControl);case _:
+return toolResult(_that.toolUseId,_that.content,_that.isError,_that.type,_that.cacheControl);case ServerToolUseBlock() when serverToolUse != null:
+return serverToolUse(_that.id,_that.name,_that.input,_that.type,_that.cacheControl);case WebSearchToolResultBlock() when webSearchToolResult != null:
+return webSearchToolResult(_that.type,_that.toolUseId,_that.content,_that.cacheControl);case _:
   return null;
 
 }
@@ -7497,122 +7782,6 @@ $CacheControlEphemeralCopyWith<$Res>? get cacheControl {
 /// @nodoc
 @JsonSerializable()
 
-class SearchResultBlock extends Block {
-  const SearchResultBlock({required this.source, required this.title, required final  List<TextBlock> content, @JsonKey(includeIfNull: false) this.citations, this.type = 'search_result', @JsonKey(name: 'cache_control', includeIfNull: false) this.cacheControl}): _content = content,super._();
-  factory SearchResultBlock.fromJson(Map<String, dynamic> json) => _$SearchResultBlockFromJson(json);
-
-/// URL or identifier for the source of this search result.
- final  String source;
-/// The title of the search result.
- final  String title;
-/// An array of text blocks containing the search result content.
- final  List<TextBlock> _content;
-/// An array of text blocks containing the search result content.
- List<TextBlock> get content {
-  if (_content is EqualUnmodifiableListView) return _content;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_content);
-}
-
-/// Citation configuration for this search result.
-@JsonKey(includeIfNull: false) final  SearchResultBlockCitations? citations;
-/// The type of content block.
-@override@JsonKey() final  String type;
-/// The cache control settings.
-@override@JsonKey(name: 'cache_control', includeIfNull: false) final  CacheControlEphemeral? cacheControl;
-
-/// Create a copy of Block
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$SearchResultBlockCopyWith<SearchResultBlock> get copyWith => _$SearchResultBlockCopyWithImpl<SearchResultBlock>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$SearchResultBlockToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SearchResultBlock&&(identical(other.source, source) || other.source == source)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._content, _content)&&(identical(other.citations, citations) || other.citations == citations)&&(identical(other.type, type) || other.type == type)&&(identical(other.cacheControl, cacheControl) || other.cacheControl == cacheControl));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,source,title,const DeepCollectionEquality().hash(_content),citations,type,cacheControl);
-
-@override
-String toString() {
-  return 'Block.searchResult(source: $source, title: $title, content: $content, citations: $citations, type: $type, cacheControl: $cacheControl)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $SearchResultBlockCopyWith<$Res> implements $BlockCopyWith<$Res> {
-  factory $SearchResultBlockCopyWith(SearchResultBlock value, $Res Function(SearchResultBlock) _then) = _$SearchResultBlockCopyWithImpl;
-@override @useResult
-$Res call({
- String source, String title, List<TextBlock> content,@JsonKey(includeIfNull: false) SearchResultBlockCitations? citations, String type,@JsonKey(name: 'cache_control', includeIfNull: false) CacheControlEphemeral? cacheControl
-});
-
-
-$SearchResultBlockCitationsCopyWith<$Res>? get citations;@override $CacheControlEphemeralCopyWith<$Res>? get cacheControl;
-
-}
-/// @nodoc
-class _$SearchResultBlockCopyWithImpl<$Res>
-    implements $SearchResultBlockCopyWith<$Res> {
-  _$SearchResultBlockCopyWithImpl(this._self, this._then);
-
-  final SearchResultBlock _self;
-  final $Res Function(SearchResultBlock) _then;
-
-/// Create a copy of Block
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? source = null,Object? title = null,Object? content = null,Object? citations = freezed,Object? type = null,Object? cacheControl = freezed,}) {
-  return _then(SearchResultBlock(
-source: null == source ? _self.source : source // ignore: cast_nullable_to_non_nullable
-as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String,content: null == content ? _self._content : content // ignore: cast_nullable_to_non_nullable
-as List<TextBlock>,citations: freezed == citations ? _self.citations : citations // ignore: cast_nullable_to_non_nullable
-as SearchResultBlockCitations?,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
-as String,cacheControl: freezed == cacheControl ? _self.cacheControl : cacheControl // ignore: cast_nullable_to_non_nullable
-as CacheControlEphemeral?,
-  ));
-}
-
-/// Create a copy of Block
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$SearchResultBlockCitationsCopyWith<$Res>? get citations {
-    if (_self.citations == null) {
-    return null;
-  }
-
-  return $SearchResultBlockCitationsCopyWith<$Res>(_self.citations!, (value) {
-    return _then(_self.copyWith(citations: value));
-  });
-}/// Create a copy of Block
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$CacheControlEphemeralCopyWith<$Res>? get cacheControl {
-    if (_self.cacheControl == null) {
-    return null;
-  }
-
-  return $CacheControlEphemeralCopyWith<$Res>(_self.cacheControl!, (value) {
-    return _then(_self.copyWith(cacheControl: value));
-  });
-}
-}
-
-/// @nodoc
-@JsonSerializable()
-
 class ServerToolUseBlock extends Block {
   const ServerToolUseBlock({required this.id, required this.name, required final  Map<String, dynamic> input, this.type = 'server_tool_use', @JsonKey(name: 'cache_control', includeIfNull: false) this.cacheControl}): _input = input,super._();
   factory ServerToolUseBlock.fromJson(Map<String, dynamic> json) => _$ServerToolUseBlockFromJson(json);
@@ -7693,6 +7862,104 @@ as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non
 as String,input: null == input ? _self._input : input // ignore: cast_nullable_to_non_nullable
 as Map<String, dynamic>,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,cacheControl: freezed == cacheControl ? _self.cacheControl : cacheControl // ignore: cast_nullable_to_non_nullable
+as CacheControlEphemeral?,
+  ));
+}
+
+/// Create a copy of Block
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CacheControlEphemeralCopyWith<$Res>? get cacheControl {
+    if (_self.cacheControl == null) {
+    return null;
+  }
+
+  return $CacheControlEphemeralCopyWith<$Res>(_self.cacheControl!, (value) {
+    return _then(_self.copyWith(cacheControl: value));
+  });
+}
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class WebSearchToolResultBlock extends Block {
+  const WebSearchToolResultBlock({this.type = 'web_search_tool_result', @JsonKey(name: 'tool_use_id') required this.toolUseId, required final  List<WebSearchResultItem> content, @JsonKey(name: 'cache_control', includeIfNull: false) this.cacheControl}): _content = content,super._();
+  factory WebSearchToolResultBlock.fromJson(Map<String, dynamic> json) => _$WebSearchToolResultBlockFromJson(json);
+
+/// The type of content block.
+@override@JsonKey() final  String type;
+/// The ID of the tool use request this is a result for.
+@JsonKey(name: 'tool_use_id') final  String toolUseId;
+/// An array of web search results.
+ final  List<WebSearchResultItem> _content;
+/// An array of web search results.
+ List<WebSearchResultItem> get content {
+  if (_content is EqualUnmodifiableListView) return _content;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_content);
+}
+
+/// The cache control settings.
+@override@JsonKey(name: 'cache_control', includeIfNull: false) final  CacheControlEphemeral? cacheControl;
+
+/// Create a copy of Block
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$WebSearchToolResultBlockCopyWith<WebSearchToolResultBlock> get copyWith => _$WebSearchToolResultBlockCopyWithImpl<WebSearchToolResultBlock>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$WebSearchToolResultBlockToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WebSearchToolResultBlock&&(identical(other.type, type) || other.type == type)&&(identical(other.toolUseId, toolUseId) || other.toolUseId == toolUseId)&&const DeepCollectionEquality().equals(other._content, _content)&&(identical(other.cacheControl, cacheControl) || other.cacheControl == cacheControl));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,type,toolUseId,const DeepCollectionEquality().hash(_content),cacheControl);
+
+@override
+String toString() {
+  return 'Block.webSearchToolResult(type: $type, toolUseId: $toolUseId, content: $content, cacheControl: $cacheControl)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $WebSearchToolResultBlockCopyWith<$Res> implements $BlockCopyWith<$Res> {
+  factory $WebSearchToolResultBlockCopyWith(WebSearchToolResultBlock value, $Res Function(WebSearchToolResultBlock) _then) = _$WebSearchToolResultBlockCopyWithImpl;
+@override @useResult
+$Res call({
+ String type,@JsonKey(name: 'tool_use_id') String toolUseId, List<WebSearchResultItem> content,@JsonKey(name: 'cache_control', includeIfNull: false) CacheControlEphemeral? cacheControl
+});
+
+
+@override $CacheControlEphemeralCopyWith<$Res>? get cacheControl;
+
+}
+/// @nodoc
+class _$WebSearchToolResultBlockCopyWithImpl<$Res>
+    implements $WebSearchToolResultBlockCopyWith<$Res> {
+  _$WebSearchToolResultBlockCopyWithImpl(this._self, this._then);
+
+  final WebSearchToolResultBlock _self;
+  final $Res Function(WebSearchToolResultBlock) _then;
+
+/// Create a copy of Block
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? type = null,Object? toolUseId = null,Object? content = null,Object? cacheControl = freezed,}) {
+  return _then(WebSearchToolResultBlock(
+type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,toolUseId: null == toolUseId ? _self.toolUseId : toolUseId // ignore: cast_nullable_to_non_nullable
+as String,content: null == content ? _self._content : content // ignore: cast_nullable_to_non_nullable
+as List<WebSearchResultItem>,cacheControl: freezed == cacheControl ? _self.cacheControl : cacheControl // ignore: cast_nullable_to_non_nullable
 as CacheControlEphemeral?,
   ));
 }
@@ -8044,271 +8311,6 @@ class _$ToolResultBlockContentTextCopyWithImpl<$Res>
   return _then(ToolResultBlockContentText(
 null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
 as String,
-  ));
-}
-
-
-}
-
-
-/// @nodoc
-mixin _$SearchResultBlockCitations {
-
-/// Whether citations are enabled for this search result.
- bool get enabled;
-/// Create a copy of SearchResultBlockCitations
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$SearchResultBlockCitationsCopyWith<SearchResultBlockCitations> get copyWith => _$SearchResultBlockCitationsCopyWithImpl<SearchResultBlockCitations>(this as SearchResultBlockCitations, _$identity);
-
-  /// Serializes this SearchResultBlockCitations to a JSON map.
-  Map<String, dynamic> toJson();
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SearchResultBlockCitations&&(identical(other.enabled, enabled) || other.enabled == enabled));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,enabled);
-
-@override
-String toString() {
-  return 'SearchResultBlockCitations(enabled: $enabled)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class $SearchResultBlockCitationsCopyWith<$Res>  {
-  factory $SearchResultBlockCitationsCopyWith(SearchResultBlockCitations value, $Res Function(SearchResultBlockCitations) _then) = _$SearchResultBlockCitationsCopyWithImpl;
-@useResult
-$Res call({
- bool enabled
-});
-
-
-
-
-}
-/// @nodoc
-class _$SearchResultBlockCitationsCopyWithImpl<$Res>
-    implements $SearchResultBlockCitationsCopyWith<$Res> {
-  _$SearchResultBlockCitationsCopyWithImpl(this._self, this._then);
-
-  final SearchResultBlockCitations _self;
-  final $Res Function(SearchResultBlockCitations) _then;
-
-/// Create a copy of SearchResultBlockCitations
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? enabled = null,}) {
-  return _then(_self.copyWith(
-enabled: null == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
-as bool,
-  ));
-}
-
-}
-
-
-/// Adds pattern-matching-related methods to [SearchResultBlockCitations].
-extension SearchResultBlockCitationsPatterns on SearchResultBlockCitations {
-/// A variant of `map` that fallback to returning `orElse`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SearchResultBlockCitations value)?  $default,{required TResult orElse(),}){
-final _that = this;
-switch (_that) {
-case _SearchResultBlockCitations() when $default != null:
-return $default(_that);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// Callbacks receives the raw object, upcasted.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case final Subclass2 value:
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SearchResultBlockCitations value)  $default,){
-final _that = this;
-switch (_that) {
-case _SearchResultBlockCitations():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `map` that fallback to returning `null`.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case final Subclass value:
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SearchResultBlockCitations value)?  $default,){
-final _that = this;
-switch (_that) {
-case _SearchResultBlockCitations() when $default != null:
-return $default(_that);case _:
-  return null;
-
-}
-}
-/// A variant of `when` that fallback to an `orElse` callback.
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return orElse();
-/// }
-/// ```
-
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool enabled)?  $default,{required TResult orElse(),}) {final _that = this;
-switch (_that) {
-case _SearchResultBlockCitations() when $default != null:
-return $default(_that.enabled);case _:
-  return orElse();
-
-}
-}
-/// A `switch`-like method, using callbacks.
-///
-/// As opposed to `map`, this offers destructuring.
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case Subclass2(:final field2):
-///     return ...;
-/// }
-/// ```
-
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool enabled)  $default,) {final _that = this;
-switch (_that) {
-case _SearchResultBlockCitations():
-return $default(_that.enabled);case _:
-  throw StateError('Unexpected subclass');
-
-}
-}
-/// A variant of `when` that fallback to returning `null`
-///
-/// It is equivalent to doing:
-/// ```dart
-/// switch (sealedClass) {
-///   case Subclass(:final field):
-///     return ...;
-///   case _:
-///     return null;
-/// }
-/// ```
-
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool enabled)?  $default,) {final _that = this;
-switch (_that) {
-case _SearchResultBlockCitations() when $default != null:
-return $default(_that.enabled);case _:
-  return null;
-
-}
-}
-
-}
-
-/// @nodoc
-@JsonSerializable()
-
-class _SearchResultBlockCitations extends SearchResultBlockCitations {
-  const _SearchResultBlockCitations({this.enabled = false}): super._();
-  factory _SearchResultBlockCitations.fromJson(Map<String, dynamic> json) => _$SearchResultBlockCitationsFromJson(json);
-
-/// Whether citations are enabled for this search result.
-@override@JsonKey() final  bool enabled;
-
-/// Create a copy of SearchResultBlockCitations
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$SearchResultBlockCitationsCopyWith<_SearchResultBlockCitations> get copyWith => __$SearchResultBlockCitationsCopyWithImpl<_SearchResultBlockCitations>(this, _$identity);
-
-@override
-Map<String, dynamic> toJson() {
-  return _$SearchResultBlockCitationsToJson(this, );
-}
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SearchResultBlockCitations&&(identical(other.enabled, enabled) || other.enabled == enabled));
-}
-
-@JsonKey(includeFromJson: false, includeToJson: false)
-@override
-int get hashCode => Object.hash(runtimeType,enabled);
-
-@override
-String toString() {
-  return 'SearchResultBlockCitations(enabled: $enabled)';
-}
-
-
-}
-
-/// @nodoc
-abstract mixin class _$SearchResultBlockCitationsCopyWith<$Res> implements $SearchResultBlockCitationsCopyWith<$Res> {
-  factory _$SearchResultBlockCitationsCopyWith(_SearchResultBlockCitations value, $Res Function(_SearchResultBlockCitations) _then) = __$SearchResultBlockCitationsCopyWithImpl;
-@override @useResult
-$Res call({
- bool enabled
-});
-
-
-
-
-}
-/// @nodoc
-class __$SearchResultBlockCitationsCopyWithImpl<$Res>
-    implements _$SearchResultBlockCitationsCopyWith<$Res> {
-  __$SearchResultBlockCitationsCopyWithImpl(this._self, this._then);
-
-  final _SearchResultBlockCitations _self;
-  final $Res Function(_SearchResultBlockCitations) _then;
-
-/// Create a copy of SearchResultBlockCitations
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? enabled = null,}) {
-  return _then(_SearchResultBlockCitations(
-enabled: null == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
-as bool,
   ));
 }
 
@@ -8858,7 +8860,7 @@ class ContentBlockStartEvent extends MessageStreamEvent {
   factory ContentBlockStartEvent.fromJson(Map<String, dynamic> json) => _$ContentBlockStartEventFromJson(json);
 
 /// A block of content in a message.
-/// Any of: [TextBlock], [ImageBlock], [ToolUseBlock], [ToolResultBlock], [SearchResultBlock], [ServerToolUseBlock]
+/// Any of: [TextBlock], [ImageBlock], [ToolUseBlock], [ToolResultBlock], [ServerToolUseBlock], [WebSearchToolResultBlock]
 @JsonKey(name: 'content_block') final  Block contentBlock;
 /// The index of the content block.
  final  int index;

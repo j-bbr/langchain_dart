@@ -105,34 +105,6 @@ sealed class Block with _$Block {
   }) = ToolResultBlock;
 
   // ------------------------------------------
-  // UNION: SearchResultBlock
-  // ------------------------------------------
-
-  /// A search result content block with citations.
-
-  @FreezedUnionValue('search_result')
-  const factory Block.searchResult({
-    /// URL or identifier for the source of this search result.
-    required String source,
-
-    /// The title of the search result.
-    required String title,
-
-    /// An array of text blocks containing the search result content.
-    required List<TextBlock> content,
-
-    /// Citation configuration for this search result.
-    @JsonKey(includeIfNull: false) SearchResultBlockCitations? citations,
-
-    /// The type of content block.
-    @Default('search_result') String type,
-
-    /// The cache control settings.
-    @JsonKey(name: 'cache_control', includeIfNull: false)
-    CacheControlEphemeral? cacheControl,
-  }) = SearchResultBlock;
-
-  // ------------------------------------------
   // UNION: ServerToolUseBlock
   // ------------------------------------------
 
@@ -158,6 +130,28 @@ sealed class Block with _$Block {
     CacheControlEphemeral? cacheControl,
   }) = ServerToolUseBlock;
 
+  // ------------------------------------------
+  // UNION: WebSearchToolResultBlock
+  // ------------------------------------------
+
+  /// A web search tool result block containing search results.
+
+  @FreezedUnionValue('web_search_tool_result')
+  const factory Block.webSearchToolResult({
+    /// The type of content block.
+    @Default('web_search_tool_result') String type,
+
+    /// The ID of the tool use request this is a result for.
+    @JsonKey(name: 'tool_use_id') required String toolUseId,
+
+    /// An array of web search results.
+    required List<WebSearchResultItem> content,
+
+    /// The cache control settings.
+    @JsonKey(name: 'cache_control', includeIfNull: false)
+    CacheControlEphemeral? cacheControl,
+  }) = WebSearchToolResultBlock;
+
   /// Object construction from a JSON representation
   factory Block.fromJson(Map<String, dynamic> json) => _$BlockFromJson(json);
 }
@@ -175,10 +169,10 @@ enum BlockEnumType {
   toolUse,
   @JsonValue('tool_result')
   toolResult,
-  @JsonValue('search_result')
-  searchResult,
   @JsonValue('server_tool_use')
   serverToolUse,
+  @JsonValue('web_search_tool_result')
+  webSearchToolResult,
 }
 
 // ==========================================
@@ -231,38 +225,5 @@ class _ToolResultBlockContentConverter
       ToolResultBlockContentBlocks(value: final v) => v,
       ToolResultBlockContentText(value: final v) => v,
     };
-  }
-}
-
-// ==========================================
-// CLASS: SearchResultBlockCitations
-// ==========================================
-
-/// Citation configuration for this search result.
-@freezed
-abstract class SearchResultBlockCitations with _$SearchResultBlockCitations {
-  const SearchResultBlockCitations._();
-
-  /// Factory constructor for SearchResultBlockCitations
-  const factory SearchResultBlockCitations({
-    /// Whether citations are enabled for this search result.
-    @Default(false) bool enabled,
-  }) = _SearchResultBlockCitations;
-
-  /// Object construction from a JSON representation
-  factory SearchResultBlockCitations.fromJson(Map<String, dynamic> json) =>
-      _$SearchResultBlockCitationsFromJson(json);
-
-  /// List of all property names of schema
-  static const List<String> propertyNames = ['enabled'];
-
-  /// Perform validations on the schema property values
-  String? validateSchema() {
-    return null;
-  }
-
-  /// Map representation of object (not serialized)
-  Map<String, dynamic> toMap() {
-    return {'enabled': enabled};
   }
 }

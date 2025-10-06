@@ -382,6 +382,25 @@ Map<String, dynamic> _$ErrorToJson(_Error instance) => <String, dynamic>{
   'message': instance.message,
 };
 
+_WebSearchResultItem _$WebSearchResultItemFromJson(Map<String, dynamic> json) =>
+    _WebSearchResultItem(
+      type: json['type'] as String,
+      url: json['url'] as String,
+      title: json['title'] as String,
+      encryptedContent: json['encrypted_content'] as String?,
+      pageAge: json['page_age'] as String?,
+    );
+
+Map<String, dynamic> _$WebSearchResultItemToJson(
+  _WebSearchResultItem instance,
+) => <String, dynamic>{
+  'type': instance.type,
+  'url': instance.url,
+  'title': instance.title,
+  'encrypted_content': ?instance.encryptedContent,
+  'page_age': ?instance.pageAge,
+};
+
 ToolCustom _$ToolCustomFromJson(Map<String, dynamic> json) => ToolCustom(
   type: json['type'] as String?,
   name: json['name'] as String,
@@ -592,36 +611,6 @@ Map<String, dynamic> _$ToolResultBlockToJson(
   'cache_control': ?instance.cacheControl?.toJson(),
 };
 
-SearchResultBlock _$SearchResultBlockFromJson(Map<String, dynamic> json) =>
-    SearchResultBlock(
-      source: json['source'] as String,
-      title: json['title'] as String,
-      content: (json['content'] as List<dynamic>)
-          .map((e) => TextBlock.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      citations: json['citations'] == null
-          ? null
-          : SearchResultBlockCitations.fromJson(
-              json['citations'] as Map<String, dynamic>,
-            ),
-      type: json['type'] as String? ?? 'search_result',
-      cacheControl: json['cache_control'] == null
-          ? null
-          : CacheControlEphemeral.fromJson(
-              json['cache_control'] as Map<String, dynamic>,
-            ),
-    );
-
-Map<String, dynamic> _$SearchResultBlockToJson(SearchResultBlock instance) =>
-    <String, dynamic>{
-      'source': instance.source,
-      'title': instance.title,
-      'content': instance.content.map((e) => e.toJson()).toList(),
-      'citations': ?instance.citations?.toJson(),
-      'type': instance.type,
-      'cache_control': ?instance.cacheControl?.toJson(),
-    };
-
 ServerToolUseBlock _$ServerToolUseBlockFromJson(Map<String, dynamic> json) =>
     ServerToolUseBlock(
       id: json['id'] as String,
@@ -643,6 +632,30 @@ Map<String, dynamic> _$ServerToolUseBlockToJson(ServerToolUseBlock instance) =>
       'type': instance.type,
       'cache_control': ?instance.cacheControl?.toJson(),
     };
+
+WebSearchToolResultBlock _$WebSearchToolResultBlockFromJson(
+  Map<String, dynamic> json,
+) => WebSearchToolResultBlock(
+  type: json['type'] as String? ?? 'web_search_tool_result',
+  toolUseId: json['tool_use_id'] as String,
+  content: (json['content'] as List<dynamic>)
+      .map((e) => WebSearchResultItem.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  cacheControl: json['cache_control'] == null
+      ? null
+      : CacheControlEphemeral.fromJson(
+          json['cache_control'] as Map<String, dynamic>,
+        ),
+);
+
+Map<String, dynamic> _$WebSearchToolResultBlockToJson(
+  WebSearchToolResultBlock instance,
+) => <String, dynamic>{
+  'type': instance.type,
+  'tool_use_id': instance.toolUseId,
+  'content': instance.content.map((e) => e.toJson()).toList(),
+  'cache_control': ?instance.cacheControl?.toJson(),
+};
 
 ToolResultBlockContentBlocks _$ToolResultBlockContentBlocksFromJson(
   Map<String, dynamic> json,
@@ -670,14 +683,6 @@ ToolResultBlockContentText _$ToolResultBlockContentTextFromJson(
 Map<String, dynamic> _$ToolResultBlockContentTextToJson(
   ToolResultBlockContentText instance,
 ) => <String, dynamic>{'value': instance.value, 'runtimeType': instance.$type};
-
-_SearchResultBlockCitations _$SearchResultBlockCitationsFromJson(
-  Map<String, dynamic> json,
-) => _SearchResultBlockCitations(enabled: json['enabled'] as bool? ?? false);
-
-Map<String, dynamic> _$SearchResultBlockCitationsToJson(
-  _SearchResultBlockCitations instance,
-) => <String, dynamic>{'enabled': instance.enabled};
 
 MessageStartEvent _$MessageStartEventFromJson(Map<String, dynamic> json) =>
     MessageStartEvent(

@@ -626,8 +626,8 @@ components:
         - $ref: "#/components/schemas/ImageBlock"
         - $ref: "#/components/schemas/ToolUseBlock"
         - $ref: "#/components/schemas/ToolResultBlock"
-        - $ref: "#/components/schemas/SearchResultBlock"
         - $ref: "#/components/schemas/ServerToolUseBlock"
+        - $ref: "#/components/schemas/WebSearchToolResultBlock"
       discriminator:
         propertyName: type
         mapping:
@@ -635,8 +635,8 @@ components:
           image: "#/components/schemas/ImageBlock"
           tool_use: "#/components/schemas/ToolUseBlock"
           tool_result: "#/components/schemas/ToolResultBlock"
-          search_result: "#/components/schemas/SearchResultBlock"
           server_tool_use: "#/components/schemas/ServerToolUseBlock"
+          web_search_tool_result: "#/components/schemas/WebSearchToolResultBlock"
     TextBlock:
       type: object
       description: A block of text content.
@@ -748,40 +748,6 @@ components:
           $ref: "#/components/schemas/CacheControlEphemeral"
       required:
         - tool_use_id
-        - content
-    SearchResultBlock:
-      type: object
-      description: A search result content block with citations.
-      properties:
-        source:
-          type: string
-          description: URL or identifier for the source of this search result.
-        title:
-          type: string
-          description: The title of the search result.
-        content:
-          type: array
-          description: An array of text blocks containing the search result content.
-          items:
-            $ref: "#/components/schemas/TextBlock"
-          minItems: 1
-        citations:
-          type: object
-          description: Citation configuration for this search result.
-          properties:
-            enabled:
-              type: boolean
-              description: Whether citations are enabled for this search result.
-              default: false
-        type:
-          type: string
-          description: The type of content block.
-          default: search_result
-        cache_control:
-          $ref: "#/components/schemas/CacheControlEphemeral"
-      required:
-        - source
-        - title
         - content
     ServerToolUseBlock:
       type: object
@@ -1179,6 +1145,52 @@ components:
       required:
           - type
           - message
+    WebSearchToolResultBlock:
+      type: object
+      description: A web search tool result block containing search results.
+      properties:
+        type:
+          type: string
+          description: The type of content block.
+          default: web_search_tool_result
+        tool_use_id:
+          type: string
+          description: The ID of the tool use request this is a result for.
+        content:
+          type: array
+          description: An array of web search results.
+          items:
+            $ref: "#/components/schemas/WebSearchResultItem"
+        cache_control:
+          $ref: "#/components/schemas/CacheControlEphemeral"
+      required:
+        - tool_use_id
+        - content
+    WebSearchResultItem:
+      type: object
+      description: A single web search result item.
+      properties:
+        type:
+          type: string
+          description: The type of search result.
+          default: web_search_result
+        url:
+          type: string
+          format: uri
+          description: The URL of the search result.
+        title:
+          type: string
+          description: The title of the search result.
+        encrypted_content:
+          type: string
+          description: The encrypted content of the search result.
+        page_age:
+          type: string
+          description: The age or date of the page.
+      required:
+        - type
+        - url
+        - title
 
 security:
   - ApiKeyAuth: [ ]
