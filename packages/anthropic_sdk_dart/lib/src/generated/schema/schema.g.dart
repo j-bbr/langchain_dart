@@ -374,6 +374,20 @@ _MessageDeltaUsage _$MessageDeltaUsageFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$MessageDeltaUsageToJson(_MessageDeltaUsage instance) =>
     <String, dynamic>{'output_tokens': instance.outputTokens};
 
+_CharLocation _$CharLocationFromJson(Map<String, dynamic> json) =>
+    _CharLocation(
+      type: json['type'] as String,
+      citedText: json['cited_text'] as String,
+      documentIndex: (json['document_index'] as num?)?.toInt(),
+    );
+
+Map<String, dynamic> _$CharLocationToJson(_CharLocation instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'cited_text': instance.citedText,
+      'document_index': ?instance.documentIndex,
+    };
+
 _Error _$ErrorFromJson(Map<String, dynamic> json) =>
     _Error(type: json['type'] as String, message: json['message'] as String);
 
@@ -399,6 +413,26 @@ Map<String, dynamic> _$WebSearchResultItemToJson(
   'title': instance.title,
   'encrypted_content': ?instance.encryptedContent,
   'page_age': ?instance.pageAge,
+};
+
+_WebSearchResultLocation _$WebSearchResultLocationFromJson(
+  Map<String, dynamic> json,
+) => _WebSearchResultLocation(
+  type: json['type'] as String,
+  url: json['url'] as String,
+  title: json['title'] as String,
+  encryptedIndex: json['encrypted_index'] as String,
+  citedText: json['cited_text'] as String,
+);
+
+Map<String, dynamic> _$WebSearchResultLocationToJson(
+  _WebSearchResultLocation instance,
+) => <String, dynamic>{
+  'type': instance.type,
+  'url': instance.url,
+  'title': instance.title,
+  'encrypted_index': instance.encryptedIndex,
+  'cited_text': instance.citedText,
 };
 
 ToolCustom _$ToolCustomFromJson(Map<String, dynamic> json) => ToolCustom(
@@ -540,12 +574,16 @@ TextBlock _$TextBlockFromJson(Map<String, dynamic> json) => TextBlock(
       : CacheControlEphemeral.fromJson(
           json['cache_control'] as Map<String, dynamic>,
         ),
+  citations: (json['citations'] as List<dynamic>?)
+      ?.map((e) => WebSearchResultLocation.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$TextBlockToJson(TextBlock instance) => <String, dynamic>{
   'text': instance.text,
   'type': instance.type,
   'cache_control': ?instance.cacheControl?.toJson(),
+  'citations': ?instance.citations?.map((e) => e.toJson()).toList(),
 };
 
 ImageBlock _$ImageBlockFromJson(Map<String, dynamic> json) => ImageBlock(
@@ -811,3 +849,15 @@ Map<String, dynamic> _$InputJsonBlockDeltaToJson(
   'partial_json': ?instance.partialJson,
   'type': instance.type,
 };
+
+CitationsDelta _$CitationsDeltaFromJson(Map<String, dynamic> json) =>
+    CitationsDelta(
+      type: json['type'] as String,
+      citation: CharLocation.fromJson(json['citation'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$CitationsDeltaToJson(CitationsDelta instance) =>
+    <String, dynamic>{
+      'type': instance.type,
+      'citation': instance.citation.toJson(),
+    };

@@ -43,6 +43,21 @@ sealed class BlockDelta with _$BlockDelta {
     required String type,
   }) = InputJsonBlockDelta;
 
+  // ------------------------------------------
+  // UNION: CitationsDelta
+  // ------------------------------------------
+
+  /// A delta in streaming citations.
+
+  @FreezedUnionValue('citations_delta')
+  const factory BlockDelta.citationsDelta({
+    /// The type of content block.
+    required String type,
+
+    /// A character location reference within a document.
+    required CharLocation citation,
+  }) = CitationsDelta;
+
   /// Object construction from a JSON representation
   factory BlockDelta.fromJson(Map<String, dynamic> json) =>
       _$BlockDeltaFromJson(json);
@@ -57,4 +72,6 @@ enum BlockDeltaEnumType {
   textDelta,
   @JsonValue('input_json_delta')
   inputJsonDelta,
+  @JsonValue('citations_delta')
+  citationsDelta,
 }

@@ -30,6 +30,9 @@ sealed class Block with _$Block {
     /// The cache control settings.
     @JsonKey(name: 'cache_control', includeIfNull: false)
     CacheControlEphemeral? cacheControl,
+
+    /// Optional citations for the text content when using web search.
+    @JsonKey(includeIfNull: false) List<WebSearchResultLocation>? citations,
   }) = TextBlock;
 
   // ------------------------------------------
