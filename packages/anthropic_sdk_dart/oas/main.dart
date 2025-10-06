@@ -20,10 +20,12 @@ void main() async {
     ),
   );
 
-  await Process.run(
+  final sourceGenResult = await Process.run(
     'dart',
     ['run', 'build_runner', 'build', 'lib', '--delete-conflicting-outputs'],
   );
+  print(sourceGenResult.stdout);
+  print(sourceGenResult.stderr);
 }
 
 String? _onSchemaName(final String schemaName) => switch (schemaName) {

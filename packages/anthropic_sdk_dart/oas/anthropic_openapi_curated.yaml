@@ -477,6 +477,7 @@ components:
         - $ref: "#/components/schemas/ToolComputerUse"
         - $ref: "#/components/schemas/ToolTextEditor"
         - $ref: "#/components/schemas/ToolBash"
+        - $ref: "#/components/schemas/ToolWebSearch"
       discriminator:
         propertyName: type
     ToolCustom:
@@ -565,6 +566,59 @@ components:
           default: bash
         cache_control:
           $ref: "#/components/schemas/CacheControlEphemeral"
+    ToolWebSearch:
+      type: object
+      description: A tool for performing web searches.
+      properties:
+        type:
+          type: string
+          description: The type of tool.
+          default: web_search_20250305
+        name:
+          type: string
+          description: The name of the tool.
+          default: web_search
+        max_uses:
+          type: integer
+          description: Optional limit on the number of searches per request.
+          minimum: 1
+        allowed_domains:
+          type: array
+          description: Optional list of domains to restrict search results to.
+          items:
+            type: string
+            format: hostname
+        blocked_domains:
+          type: array
+          description: Optional list of domains to exclude from search results.
+          items:
+            type: string
+            format: hostname
+        user_location:
+          type: object
+          description: Optional user location for localizing search results.
+          properties:
+            type:
+              type: string
+              description: The type of location specification.
+              enum:
+                - approximate
+            city:
+              type: string
+              description: The city name.
+            region:
+              type: string
+              description: The region or state name.
+            country:
+              type: string
+              description: The country code (e.g., "US").
+            timezone:
+              type: string
+              description: The timezone identifier (e.g., "America/Los_Angeles").
+          required:
+            - type
+        cache_control:
+          $ref: "#/components/schemas/CacheControlEphemeral"
     Block:
       description: A block of content in a message.
       oneOf:
@@ -572,6 +626,8 @@ components:
         - $ref: "#/components/schemas/ImageBlock"
         - $ref: "#/components/schemas/ToolUseBlock"
         - $ref: "#/components/schemas/ToolResultBlock"
+        - $ref: "#/components/schemas/SearchResultBlock"
+        - $ref: "#/components/schemas/ServerToolUseBlock"
       discriminator:
         propertyName: type
         mapping:
@@ -579,6 +635,8 @@ components:
           image: "#/components/schemas/ImageBlock"
           tool_use: "#/components/schemas/ToolUseBlock"
           tool_result: "#/components/schemas/ToolResultBlock"
+          search_result: "#/components/schemas/SearchResultBlock"
+          server_tool_use: "#/components/schemas/ServerToolUseBlock"
     TextBlock:
       type: object
       description: A block of text content.
@@ -691,6 +749,70 @@ components:
       required:
         - tool_use_id
         - content
+    SearchResultBlock:
+      type: object
+      description: A search result content block with citations.
+      properties:
+        source:
+          type: string
+          description: URL or identifier for the source of this search result.
+        title:
+          type: string
+          description: The title of the search result.
+        content:
+          type: array
+          description: An array of text blocks containing the search result content.
+          items:
+            $ref: "#/components/schemas/TextBlock"
+          minItems: 1
+        citations:
+          type: object
+          description: Citation configuration for this search result.
+          properties:
+            enabled:
+              type: boolean
+              description: Whether citations are enabled for this search result.
+              default: false
+        type:
+          type: string
+          description: The type of content block.
+          default: search_result
+        cache_control:
+          $ref: "#/components/schemas/CacheControlEphemeral"
+      required:
+        - source
+        - title
+        - content
+    ServerToolUseBlock:
+      type: object
+      description: A server-side tool use block that represents tool usage initiated by the server.
+      properties:
+        id:
+          type: string
+          description: |
+            A unique identifier for this particular server tool use block.
+            This will be used to match up any tool results later.
+          example: srvtoolu_01WYG3ziw53XMcoyKL4XcZmE
+        name:
+          type: string
+          description: The name of the tool being used by the server.
+          example: web_search
+        input:
+          type: object
+          description: An object containing the input being passed to the tool, conforming to the tool's input schema.
+          additionalProperties: true
+          example:
+            query: "claude shannon birth date"
+        type:
+          type: string
+          description: The type of content block.
+          default: server_tool_use
+        cache_control:
+          $ref: "#/components/schemas/CacheControlEphemeral"
+      required:
+        - id
+        - name
+        - input
     CacheControlEphemeral:
       type: object
       description: The cache control settings.
